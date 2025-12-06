@@ -8,5 +8,15 @@
     "formatter": {
       "quoteStyle": "single"
     }
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "useConsistentTypeDefinitions": "off"
+      },
+      "nursery": {
+        "noLeakedRender": "off"
+      }
+    }
   }
 }
