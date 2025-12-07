@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ArrowRight } from 'lucide-react';
@@ -11,24 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-
-interface GetRoomsAPIResponse {
-  id: string;
-  name: string;
-  questionsCount: number;
-  createdAt: string;
-}
+import { useRooms } from '@/http/use-rooms';
 
 export function RoomList() {
-  const { data, isLoading } = useQuery({
-    queryKey: ['get-rooms'],
-    queryFn: async () => {
-      const response = await fetch('http://localhost:3333/rooms');
-      const result: GetRoomsAPIResponse[] = await response.json();
-
-      return result;
-    },
-  });
+  const { data, isLoading } = useRooms();
 
   return (
     <Card>
